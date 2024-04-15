@@ -1,36 +1,37 @@
 import { Card, CardContent, CardHeader, CardMeta, CardDescription, Image, Button } from "semantic-ui-react"
-import { Activity } from "../../../app/models/activity"
+import { useStore } from "../../../app/stores/store"
+import LoadingComponent from "../../../app/layout/LoadingComponent";
+import { observer } from "mobx-react-lite";
 
-interface Props {
-    acitivity: Activity
-    cancelSelectActivity: () => void
-    openForm: (id: string) => void
-}
+export default observer(function ActivityDetails() {
+    const {activityStore} = useStore();
+    const {selectedActivity: activity, openForm, cancelSelectedActivity} = activityStore;
 
-export default function ActivityDetails({acitivity, cancelSelectActivity, openForm}: Props) {
+    if (!activity) return <LoadingComponent content={""} />;
+
     return (
         <Card fluid>
-            <Image src={`/assets/categoryImages/${acitivity.category}.jpg`} />
+            <Image src={`/assets/categoryImages/${activity.category}.jpg`} />
             <CardContent>
-                <CardHeader>{acitivity.title}</CardHeader>
+                <CardHeader>{activity.title}</CardHeader>
                 <CardMeta>
-                    <span>{acitivity.date}</span>
+                    <span>{activity.date}</span>
                 </CardMeta>
                 <CardDescription>
-                    {acitivity.description}
+                    {activity.description}
                 </CardDescription>
             </CardContent>
             <CardContent extra>
                 <Button.Group widths='2'>
-                    <Button onClick={() => openForm(acitivity.id)} basic color='blue' content='Edit' />
+                    <Button onClick={() => openForm(activity.id)} basic color='blue' content='Edit' />
                     <Button 
                         basic 
                         color='grey' 
                         content='Cancel' 
-                        onClick={cancelSelectActivity}
+                        onClick={cancelSelectedActivity}
                     />
                 </Button.Group>
             </CardContent>
         </Card>
     )
-}
+});

@@ -1,1 +1,19 @@
 - CancellationToken is something useful to learn more about in controller requests
+- lookup how exactly controllers get information in an http request from the client (through body, through url query params, through routing, etc.)
+
+- types vs interfaces in TS (helpful article present in udemy course)
+- interfaces are extendable, types are not. This is helpful when extending interfaces we bring from third party library files.
+- types can be used to create custom types. for e.g. type NullOrUndefined = Null | undefined, not possible with interfaces.
+- there are generic types <T> you can see in axios agent.ts page
+
+- makeObservable vs makeAutoObservable in mobx
+- property, action, computed value in mobx
+- redux only one store, mobx has multiple ones	
+- in mobx, we need to wrap our react component with observer if you expect to change the values of anything within your store, and want to reload your component with the updated value.
+- for mobx stores, when updating your store properties after await operations, in strict mode, they need to be wrapped in runInAction(() => {}); method to hide warnings to get the operation done in the same tick.
+
+- you can specify key within components to reset state in react.
+- useParams() hook to get parameters in react-router
+- useNavigate() to navigate to a different page within code
+- useLocation() returns the current path within the router
+- <Link> and <NavLink> components to display hyperlinks

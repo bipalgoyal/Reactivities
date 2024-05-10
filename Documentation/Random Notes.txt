@@ -3,6 +3,8 @@
 - In EF, if we try to add an entity without specifying the PK of the entity, it will generate one automatically for us.
 - You can add extension methods to a class in C#, look into ApplicationServiceExtensions.cs in the API project to understand more.
 - Exceptions are heavy and costly, avoid if possible.
+- wrap around Partial<InterfaceName> to make all properties of interface optional
+
 
 
 ~Types and Interface in TS~
@@ -29,6 +31,10 @@
 - create Result object to send success and failure proerties at Application layer.
 - ApiController attibute can automatically generate 400 errors using Data Annotations in our domain entity class objects. [read more on MSFT docs]
 - FluentValidation library used for error validation (reason is to validate at Application layer instead of Domain layer)
+
+~Formik~
+- enableReinitialize prop to make sure the form is re rendered when form data is updated
+- useField hook to create custom input fields
 
 ~commands~
 * dotnet watch --no-hot-reload
